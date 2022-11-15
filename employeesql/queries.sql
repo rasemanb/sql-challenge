@@ -33,3 +33,24 @@ from employees
 where first_name = 'Hercules' and last_name like 'B%';
 
 -- 6
+select dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name
+from dept_emp
+join employees
+on dept_emp.emp_no = employees.emp_no
+join departments
+on dept_emp.dept_no = departments.dept_no;
+
+-- 7
+select dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name
+from dept_emp
+join employees
+on dept_emp.emp_no = employees.emp_no
+join departments
+on dept_emp.dept_no = departments.dept_no
+where departments.dept_name = 'Sales' or departments.dept_name = 'Development';
+
+-- 8 
+select last_name, count(last_name) as frequency
+from employees
+group by last_name
+order by count(last_name) desc;
